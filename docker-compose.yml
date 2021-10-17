@@ -1,0 +1,51 @@
+version: "3.8"
+volumes:
+  mydata:
+  db-store:
+services:
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    volumes:
+#      - type: volume
+#        source: mydata
+#        target: /data
+#        volume:
+#          nocopy: true
+#      - type: bind
+#        source: ./src
+#        target: /work/src
+#    environment:
+#      - DB_CONNECTION=mysql
+#      - DB_HOST=db
+#      - DB_PORT=3306
+#      - DB_DATABASE=${DB_NAME}
+#      - DB_USERNAME=${DB_USER}
+#      - DB_PASSWORD=${DB_PASS}
+#    depends_on:
+#      - db
+#    ports:
+#      - "3000:3000"
+#    entrypoint: "/bin/sh -c 'sleep 10 && node .'"
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    volumes:
+      - type: volume
+        source: db-store
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASS}
+      - MYSQL_ROOT_PASSWORD=${DB_PASS}
+      - TZ=${TZ}
+    ports:
+      - target: 3306
+        published: ${DB_PORT:-3306}
+        protocol: tcp
+        mode: host
