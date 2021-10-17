@@ -1,5 +1,9 @@
 # loopback-mysql-connect
 
+### [loopback4チュートリアル](https://loopback.io/doc/en/lb4/Connecting-to-MySQL.html) を参考に構築
+### 特に注意する箇所
+- `lb4 discover --schema demo（db名）`でMySQL用の書き方に書き換える
+
 This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
 [initial project layout](https://loopback.io/doc/en/lb4/Loopback-application-layout.html).
 
