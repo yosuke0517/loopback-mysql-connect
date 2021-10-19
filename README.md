@@ -1,5 +1,7 @@
 # loopback-mysql-connect
 
+# 普通のMVC + service 的な構成
+
 ### [loopback4チュートリアル](https://loopback.io/doc/en/lb4/Connecting-to-MySQL.html) を参考に構築
 ### 特に注意する箇所
 - `lb4 discover --schema demo（db名）`でMySQL用の書き方に書き換える
